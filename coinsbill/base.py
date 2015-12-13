@@ -21,7 +21,8 @@ class APIClient(object):
 
     def _handle_response(self, response):
         
-        return response.json()
+        # return response.json()
+        return response
 
 
     def status(self, response):

@@ -18,16 +18,19 @@ except NameError:
 class Invoice(CoinsBillClient):
     """Handle invoice to the CoinsBill API."""
 
-    INVOICE_ENDPOINT = 'https://www.coinsbill.com/api/invoice'
+    def get(self, id=None):
+        path = 'invoice'
+        return self._request('GET', path)
 
     def create(self, **params):
-        uri = self.BASE_URL + 'invoice/'
+        uri = self.BASE_URL + 'invoice'
         print uri
         data = dict(**(params or {}))
         r = self.client.post(uri, data=json.dumps(data))
         print r.json()
 
         return r
+
 
 
 

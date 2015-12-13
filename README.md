@@ -10,7 +10,7 @@ from coinsbill import CoinsBill
 access_token = 'a9esthaVUjOuvzTCSTXsJUCK0lCMCk'
 c = CoinsBill(access_token)
 
-invoices = c.invoice.get('/invoice')
+invoices = c.invoice.get()
 
 new = c.invoice.create( 
     email="bill@dow.com",
