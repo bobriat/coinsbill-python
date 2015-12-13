@@ -1,7 +1,7 @@
 # CoinsBill Python bindings 
 
 
-This is a simple library for interacting with the [Vimeo API](https://developers.vimeo.com).
+This is a python library for interacting with the [CoinsBill API](hhttps://www.coinsbill.com/developers).
 
 ### Example Usage
 
