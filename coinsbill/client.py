@@ -1,8 +1,6 @@
 import json
 
 from base import APIClient
-from urllib import urlencode
-
 
 
 class CoinsBillError(Exception):
@@ -31,12 +29,10 @@ class CoinsBillError(Exception):
 
 class CoinsBillClient(APIClient):
     """
-    Methods:
+    Usage
    
     """
-    # BASE_URL = 'https://www.coinsbill.com/api'
-
-
+    
     def _handle_response(self, response):
         if response.status_code > 299:
             raise CoinsBillError(response.status_code, response=response)
@@ -50,22 +46,3 @@ class CoinsBillClient(APIClient):
 
 
 
-
-
-if __name__ == '__main__':
-    import sys
-
-    if len(sys.argv) < 2:
-        print "Must provide a CoinsBill API key."
-        sys.exit(1)
-
-    api_key = sys.argv[1]
-
-    api = CoinsBillClient(api_key)
-    # r = api.call('invoice', users='shazow,limedaring')
-
-    data = {"email": "bill@dow.com", "currency": "USD", "country": "US", "recurrence_period": "3", "recurrence_unit": "W", "billing_first_name": "orliesaurus", "billing_last_name": "smith", "items": [{ "name": "api Name", "quantity": 10, "unit_price": 2}, { "name": "api 2", "quantity": "4", "unit_price": 3 }] } 
-
-    r =  api.create('invoice', **data)
-
-    print r

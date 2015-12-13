@@ -16,7 +16,7 @@ class APIClient(object):
         self.rate_limit_lock = rate_limit_lock
 
     def _compose_url(self, path, params=None):
-        # return self.BASE_URL + path + '?' + urlencode(params)
+        
         return self.BASE_URL + path 
 
     def _handle_response(self, response):

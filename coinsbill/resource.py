@@ -7,7 +7,7 @@ import os
 import io
 import json
 import requests
-# from .exceptions import *
+
 from .client import CoinsBillClient
 
 try:
