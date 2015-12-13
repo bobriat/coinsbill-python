@@ -19,7 +19,8 @@ class Invoice(CoinsBillClient):
     """Handle invoice to the CoinsBill API."""
 
     def get(self, id=None):
-        path = 'invoice'
+        path = "invoice" if id is None else 'invoice/%s' % id
+
         return self._request('GET', path)
 
     def create(self, **params):
