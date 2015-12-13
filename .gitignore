@@ -1,0 +1,16 @@
+/.eggs
+/build
+/dist
+/MANIFEST
+.python-version
+*.pyc
+*.egg
+*.class
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+htmlcov/
