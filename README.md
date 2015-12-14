@@ -8,10 +8,10 @@ This is a python library for interacting with the [CoinsBill API](hhttps://www.c
 ```python
 from coinsbill import CoinsBill
 access_token = 'a9esthaVUjOuvzTCSTXsJUCK0lCMCk'
-c = CoinsBill(access_token)
+api = CoinsBill(access_token)
 
 # Create New Invoice
-new = c.invoice.create( 
+response = api.invoice.create( 
     email="bill@dow.com",
     currency="USD",
     country="US",
@@ -19,15 +19,15 @@ new = c.invoice.create(
     items=[{ "name": "api Name", "quantity": 10, "unit_price": 2}, { "name": "api 2", "quantity": "4", "unit_price": 3 }] 
     )
 
-print new.json()   # Load the body's JSON data.
+print response.json()   # Load the body's JSON data.
 
 # Get all Invoices
-invoices = c.invoice.get()
-assert invoices.status_code == 200  # Make sure we got back a successful response.
+response = api.invoice.get()
+assert response.status_code == 200  # Make sure we got back a successful response.
 
 # Get Invoice by ID
-invoice = c.invoice.get('8G98A')
-assert invoice.status_code == 200  # Make sure we got back a successful response.
+response = api.invoice.get('8G98A')
+assert response.status_code == 200  # Make sure we got back a successful response.
 
 ```
 
