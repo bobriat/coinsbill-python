@@ -16,10 +16,20 @@ response = api.invoice.create(
     currency="USD",
     country="US",
     billing_first_name="Sam",
-    items=[{ "name": "api Name", "quantity": 10, "unit_price": 2}, { "name": "api 2", "quantity": "4", "unit_price": 3 }] 
+    items=[{
+            "name": "fruits", 
+            "quantity": 10, 
+            "unit_price": 2
+            }, 
+            {
+            "name": "coffee", 
+            "quantity": "4", 
+            "unit_price": 3 
+            }] 
     )
 
-print response.json()   # Load the body's JSON data.
+assert response.status_code == 201  # Successfull Create Invoice 
+response.json()   # Load the body's JSON data.
 
 # Get all Invoices
 response = api.invoice.get()
@@ -28,6 +38,12 @@ assert response.status_code == 200  # Make sure we got back a successful respons
 # Get Invoice by ID
 response = api.invoice.get('8G98A')
 assert response.status_code == 200  # Make sure we got back a successful response.
+
+
+data = {'currency': 'USD', 'country': 'US', 'email': 'bill@dow.com', 'billing_first_name': 'Sam', 'billing_last_name': 'Smith', 'items': [{ "name": "api Name", "quantity": 10, "unit_price": 2}, { "name": "api 2", "quantity": "4", "unit_price": 3 }] }
+
+response = api.invoice.update(id = '8G98A', **data) 
+   
 
 ```
 
@@ -38,18 +54,5 @@ Note:  You can find the app tokens and an authenticated bearer token on Dashboar
 This package is called ``coinsbill`` on PyPI. Install using::
 
     $ pip install --upgrade  coinsbill
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

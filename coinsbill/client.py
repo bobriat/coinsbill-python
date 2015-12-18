@@ -29,8 +29,6 @@ class CoinsBillError(Exception):
 
 class CoinsBillClient(APIClient):
     """
-    Usage
-   
     """
     
     def _handle_response(self, response):

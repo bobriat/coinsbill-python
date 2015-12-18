@@ -1,15 +1,16 @@
 import json
 import requests
 
-
+import coinsbill
 
 class APIClient(object):
     BASE_URL = 'https://www.coinsbill.com/api/'
     
     def __init__(self, api_key=None, rate_limit_lock=None):
+        key = api_key if api_key is not None else coinsbill.api_key
         self.client = requests.session()
         self.client.headers = {
-            "Authorization": "bearer %s" % api_key,
+            "Authorization": "bearer %s" % key,
             "Content-Type": "application/json",
         } 
         
@@ -21,7 +22,6 @@ class APIClient(object):
 
     def _handle_response(self, response):
         
-        # return response.json()
         return response
 
 
@@ -36,8 +36,7 @@ class APIClient(object):
         data = dict(**(params or {}))
 
         if params:
-            data.update(params)
-        
+            data.update(params)    
         
         if method == "POST":
             response = self.client.post(uri, data=json.dumps(data))
@@ -53,13 +52,13 @@ class APIClient(object):
 
         return self._handle_response(response)
 
-    def get(self, path, **params):
+    def _get(self, path, **params):
         return self._request('GET', path, **params)
 
-    def create(self, path, **params):
+    def _create(self, path, **params):
         return self._request('POST', path, **params)
 
-    def update(self, path, **params):
+    def _update(self, path, **params):
         return self._request('PUT', path, **params)
 
     def _call(self, path, **params):

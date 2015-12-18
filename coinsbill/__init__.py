@@ -12,6 +12,5 @@ from .client import CoinsBillClient
 
 from .resource import ( 
     Invoice,
-    ResourceMixin,
     CoinsBill
     )
