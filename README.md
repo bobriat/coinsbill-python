@@ -40,9 +40,7 @@ response = api.invoice.get('8G98A')
 assert response.status_code == 200  # Make sure we got back a successful response.
 
 
-data = {'currency': 'USD', 'country': 'US', 'email': 'bill@dow.com', 'billing_first_name': 'Sam', 'billing_last_name': 'Smith', 'items': [{ "name": "api Name", "quantity": 10, "unit_price": 2}, { "name": "api 2", "quantity": "4", "unit_price": 3 }] }
 
-response = api.invoice.update(id = '8G98A', **data) 
    
 
 ```
